@@ -274,14 +274,13 @@ body > *:not(#particleCanvas) {
 <section class="section" id="about">
   <h2>ABOUT VEAR</h2>
   <p>
-    VEAR is a premium streetwear brand focused on minimal and powerful fashion.
-    We create modern clothing designed for comfort, confidence, and individuality.
+    VEAR Is a premium product company proving to the world that Artist-made Art is better than AI Art
   </p>
 </section>
 
 <!-- CONTACT -->
 <section class="section contact" id="contact">
-  <h2>CONTACT US</h2>
+  <h2>wanna work with us?</h2>
 
   <input id="name" placeholder="Your Name">
   <input id="email" placeholder="Your Email">
@@ -290,7 +289,7 @@ body > *:not(#particleCanvas) {
 </section>
 
 <footer>
-  © 2026 VEAR. All rights reserved.
+  © 2026 VEAR. dihs.
 </footer>
 
 <script>
@@ -308,62 +307,21 @@ function sendMessage(){
 }
 
 
-// ===== Flowing Particle Background =====
-const canvas = document.getElementById("particleCanvas");
-const ctx = canvas.getContext("2d");
-
-let particles = [];
-let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-
-// Create lots of background flowing particles
-for (let i = 0; i < 160; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: (Math.random() - 0.5) * 0.6,
-    vy: (Math.random() - 0.5) * 0.6,
-    size: Math.random() * 2 + 0.5
-  });
-}
-
-window.addEventListener("mousemove", (e) => {
-  mouse.x = e.clientX;
-  mouse.y = e.clientY;
-});
-
-function updateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach((p) => {
-    // Flow movement
-    p.x += p.vx;
-    p.y += p.vy;
+<body style="background-color: white;">
+</body>
 
     // Wrap around screen
     if (p.x > canvas.width) p.x = 0;
     if (p.x < 0) p.x = canvas.width;
     if (p.y > canvas.height) p.y = 0;
     if (p.y < 0) p.y = canvas.height;
-
-    // Slight attraction to cursor
-    let dx = mouse.x - p.x;
-    let dy = mouse.y - p.y;
-    let dist = Math.sqrt(dx * dx + dy * dy);
-
     if (dist < 150) {
       p.x += dx * 0.002;
       p.y += dy * 0.002;
     }
 
     ctx.beginPath();
-    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.arc(p.y, p.x, p.size, 0, Math.PI * 2);
     ctx.fillStyle = "rgba(255,255,255,0.4)";
     ctx.fill();
   });
