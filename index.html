@@ -196,6 +196,7 @@ footer {
     height: 200px;
   }
 }
+
 /* PARTICLE CANVAS */
 #particleCanvas {
   position: fixed;
@@ -302,7 +303,9 @@ body > *:not(#particleCanvas) {
 </footer>
 
 <script>
-function sendMessage(){
+const DISCORD_WEBHOOK = "PASTE_YOUR_WEBHOOK_URL_HERE";
+
+async function sendMessage(){
   let name = document.getElementById('name').value;
   let email = document.getElementById('email').value;
   let message = document.getElementById('message').value;
@@ -312,12 +315,28 @@ function sendMessage(){
     return;
   }
 
-  alert('Message sent successfully! (Demo)');
+  try {
+    await fetch(DISCORD_WEBHOOK, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        content: `📩 New VEAR Contact Submission\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`
+      })
+    });
+
+    alert('Message sent successfully!');
+
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('message').value = '';
+
+  } catch (err) {
+    alert('Failed to send message');
+    console.error(err);
+  }
 }
-
-
-<body style="background-color: white;">
-</body>
 </script>
 
 </body>
