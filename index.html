@@ -50,20 +50,33 @@ body {
 }
 
 /* HERO */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-}
+<div class="hero-slider">
+  <div class="slide active">
+    <h1>Welcome to Our Site</h1>
+    <p>Build. Create. Explore.</p>
+  </div>
 
-.hero h1 {
-  font-size: 36px;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
+  <div class="slide">
+    <h1>Creative Ideas</h1>
+    <p>Design that matters</p>
+  </div>
 
-.hero p {
-  color: #aaa;
-}
+  <div class="slide">
+    <h1>Join Us</h1>
+    <p>Let’s make something cool</p>
+  </div>
+</div>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3000);
+</script>
 
 /* PRODUCTS */
 .products {
