@@ -231,7 +231,7 @@ body > *:not(#particleCanvas) {
 <!-- HERO -->
 <section class="hero" id="home">
   <h1>VEAR OFFICIAL PRODUCTS</h1>
-  <p>Premium streetwear. Minimal. Powerful.</p>
+  <p>Premium streetwear. Minimal. Powerful. and cheap</p>
 </section>
 
 <!-- PRODUCTS -->
@@ -263,12 +263,12 @@ body > *:not(#particleCanvas) {
       <div class="info">
         <h3>VEAR Cap</h3>
         <p>$35</p>
-        <button onclick="alert('eyes of wrath cup')">Buy Now</button>
+        <button onclick="alert('cap added to cart')">Buy Now</button>
       </div>
     </div>
     
     <div class="card">
-      <img src="cap.jpg" alt="VEAR Cap">
+      <img src="cap.jpg" alt="cup of wrath">
       <div class="info">
         <h3>eyes of wrath cup</h3>
         <p>$20</p>
@@ -318,28 +318,6 @@ function sendMessage(){
 
 <body style="background-color: white;">
 </body>
-
-    // Wrap around screen
-    if (p.x > canvas.width) p.x = 0;
-    if (p.x < 0) p.x = canvas.width;
-    if (p.y > canvas.height) p.y = 0;
-    if (p.y < 0) p.y = canvas.height;
-    if (dist < 150) {
-      p.x += dx * 0.002;
-      p.y += dy * 0.002;
-    }
-
-    ctx.beginPath();
-    ctx.arc(p.y, p.x, p.size, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255,255,255,0.4)";
-    ctx.fill();
-  });
-
-  requestAnimationFrame(updateParticles);
-}
-
-updateParticles();
-
 </script>
 
 </body>
