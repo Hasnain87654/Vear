@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>VEAR Official</title>
 <link rel="icon" href="Ve.png" type="image/png">
+
 <style>
 * {
   box-sizing: border-box;
@@ -50,33 +51,20 @@ body {
 }
 
 /* HERO */
-<div class="hero-slider">
-  <div class="slide active">
-    <h1>Welcome to Our Site</h1>
-    <p>Build. Create. Explore.</p>
-  </div>
+.hero {
+  padding: 120px 20px;
+  text-align: center;
+}
 
-  <div class="slide">
-    <h1>Creative Ideas</h1>
-    <p>Design that matters</p>
-  </div>
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
 
-  <div class="slide">
-    <h1>Join Us</h1>
-    <p>Let’s make something cool</p>
-  </div>
-</div>
-
-<script>
-  const slides = document.querySelectorAll(".slide");
-  let index = 0;
-
-  setInterval(() => {
-    slides[index].classList.remove("active");
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-  }, 3000);
-</script>
+.hero p {
+  color: #aaa;
+  font-size: 18px;
+}
 
 /* PRODUCTS */
 .products {
@@ -145,10 +133,9 @@ body {
 
 .card button:hover {
   background: #666;
-  color: #fff;
 }
 
-/* ABOUT & CONTACT */
+/* SECTIONS */
 .section {
   padding: 80px 20px;
   max-width: 800px;
@@ -194,7 +181,6 @@ footer {
   color: #777;
 }
 
-/* MOBILE */
 @media (max-width: 600px) {
   .navbar {
     flex-direction: column;
@@ -209,22 +195,6 @@ footer {
   .card img {
     height: 200px;
   }
-}
-
-/* PARTICLE CANVAS */
-#particleCanvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-
-body > *:not(#particleCanvas) {
-  position: relative;
-  z-index: 1;
 }
 </style>
 </head>
