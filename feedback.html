@@ -3,24 +3,19 @@
 <body> 
 
 <section class="section contact" id="contact">
-  <h2>wanna work with us?</h2>
+  <h2>got a feedback?</h2>
 
-  <input id="name" placeholder="Your Name">
-  <input id="email" placeholder="Your Email">
   <textarea id="message" rows="5" placeholder="Your Message"></textarea>
   <button onclick="sendMessage()">Send</button>
 </section>
 
 <footer>
-  © 2026 VEAR. Logos and Designs are Copyrighted.
 </footer>
 
 <script>
 const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON";
 
 async function sendMessage(){
-  let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
   let message = document.getElementById('message').value;
 
   if(name === '' || email === '' || message === ''){
@@ -32,17 +27,15 @@ async function sendMessage(){
     await fetch(DISCORD_WEBHOOK, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'feedback/json'
       },
       body: JSON.stringify({
-        content: `📩 New VEAR Contact Submission\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`
+        content: `📩 New feedback\n\n👤💬 Message: ${message}`
       })
     });
 
     alert('Message sent successfully!');
-
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
+    
     document.getElementById('message').value = '';
 
   } catch (err) {
