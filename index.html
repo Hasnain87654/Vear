@@ -16,17 +16,6 @@ html {
   scroll-behavior: smooth;
 }
 
-<script>
-  const slides = document.querySelectorAll(".slide");
-  let current = 0;
-
-  setInterval(() => {
-    slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
-    slides[current].classList.add("active");
-  }, 4000); // changes every 4 seconds
-</script>
-    
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #181818;
@@ -216,7 +205,7 @@ footer {
   .navbar a {
     margin-left: 0;
   }
-  .hero h1 {
+  .slide h1 {
     font-size: 28px;
   }
   .card img {
@@ -225,9 +214,8 @@ footer {
 }
 </style>
 </head>
-<body>
 
-<canvas id="particleCanvas"></canvas>
+<body>
 
 <!-- NAVBAR -->
 <div class="navbar">
@@ -236,7 +224,7 @@ footer {
     <a href="#home">HOME</a>
     <a href="#products">PRODUCTS</a>
     <a href="#about">ABOUT</a>
-    <a href="feedback.html">CONTACT</a>
+    <a href="#contact">CONTACT</a>
   </div>
 </div>
 
@@ -258,57 +246,26 @@ footer {
   </div>
 </section>
 
-
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <h2>FEATURED</h2>
-
   <div class="grid">
-
     <div class="card">
       <img src="hoodie.jpg" alt="VEAR Hoodie">
       <div class="info">
         <h3>VEAR Hoodie</h3>
         <p>$120</p>
-        <button onclick="alert('VEAR Hoodie added to cart')">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="tshirt.jpg" alt="VEAR T-Shirt">
-      <div class="info">
-        <h3>VEAR T-Shirt</h3>
-        <p>$45</p>
-        <button onclick="alert('VEAR T-Shirt added to cart')">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="cap.jpg" alt="VEAR Cap">
-      <div class="info">
-        <h3>VEAR Cap</h3>
-        <p>$35</p>
-        <button onclick="alert('cap added to cart')">Buy Now</button>
-      </div>
-    </div>
-    
-    <div class="card">
-      <img src="cap.jpg" alt="cup of wrath">
-      <div class="info">
-        <h3>eyes wrath cup</h3>
-        <p>$20</p>
-        <button onclick="alert('eyes of wrath added to the cart')">Buy Now</button>
+        <button>Buy Now</button>
       </div>
     </div>
   </div>
-  
 </section>
 
 <!-- ABOUT -->
 <section class="section" id="about">
   <h2>ABOUT VEAR</h2>
   <p>
-    VEAR Is a premium product company proving to the world that Artist-made Art is better than AI Art
+    VEAR is a premium product company proving that artist-made art is better than AI art.
   </p>
 </section>
 
@@ -326,42 +283,20 @@ footer {
   © 2026 VEAR. Logos and Designs are Copyrighted.
 </footer>
 
+<!-- SLIDER SCRIPT (FIXED) -->
 <script>
-const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON";
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".slide");
+  let current = 0;
 
-async function sendMessage(){
-  let name = document.getElementById('name').value;
-  let email = document.getElementById('email').value;
-  let message = document.getElementById('message').value;
-
-  if(name === '' || email === '' || message === ''){
-    alert('Please fill all fields');
-    return;
-  }
-
-  try {
-    await fetch(DISCORD_WEBHOOK, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        content: `📩 New VEAR Contact Submission\n\n👤 Name: ${name}\n📧 Email: ${email}\n💬 Message: ${message}`
-      })
-    });
-
-    alert('Message sent successfully!');
-
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('message').value = '';
-
-  } catch (err) {
-    alert('Failed to send message');
-    console.error(err);
-  }
-}
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 4000);
+});
 </script>
 
 </body>
 </html>
+
