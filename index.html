@@ -16,6 +16,17 @@ html {
   scroll-behavior: smooth;
 }
 
+<script>
+  const slides = document.querySelectorAll(".slide");
+  let current = 0;
+
+  setInterval(() => {
+    slides[current].classList.remove("active");
+    current = (current + 1) % slides.length;
+    slides[current].classList.add("active");
+  }, 4000); // changes every 4 seconds
+</script>
+    
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #181818;
@@ -50,20 +61,36 @@ body {
   color: #aaa;
 }
 
-/* HERO */
-.hero {
-  padding: 120px 20px;
+/* HERO SLIDER */
+.hero-slider {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  overflow: hidden;
 }
 
-.hero h1 {
+.slide {
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide h1 {
   font-size: 42px;
   margin-bottom: 15px;
 }
 
-.hero p {
-  color: #aaa;
+.slide p {
   font-size: 18px;
+  color: #aaa;
 }
 
 /* PRODUCTS */
@@ -213,11 +240,24 @@ footer {
   </div>
 </div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <h1>VEAR OFFICIAL PRODUCTS</h1>
-  <p>Premium Products, Real Designs and Arts, No AI</p>
+<!-- HERO SLIDER -->
+<section class="hero-slider" id="home">
+  <div class="slide active">
+    <h1>VEAR OFFICIAL PRODUCTS</h1>
+    <p>Premium Products, Real Designs, No AI</p>
+  </div>
+
+  <div class="slide">
+    <h1>Artist Made Designs</h1>
+    <p>Supporting Real Creativity</p>
+  </div>
+
+  <div class="slide">
+    <h1>Wear the Difference</h1>
+    <p>Original. Authentic. VEAR.</p>
+  </div>
 </section>
+
 
 <!-- PRODUCTS -->
 <section class="products" id="products">
