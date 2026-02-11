@@ -225,6 +225,7 @@ footer {
     <a href="#products">PRODUCTS</a>
     <a href="#about">ABOUT</a>
     <a href="#contact">CONTACT</a>
+    <a href="#contact">FEEDBACK</a>
   </div>
 </div>
 
@@ -254,8 +255,20 @@ footer {
       <img src="hoodie.jpg" alt="VEAR Hoodie">
       <div class="info">
         <h3>VEAR Hoodie</h3>
-        <p>$120</p>
-        <button>Buy Now</button>
+        <p>$test</p>
+        <button onclick="buyProduct('VEAR Hoodie')">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+  <h2>FEATURED</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="cgerbcap.jpg" alt="cgrb cap">
+      <div class="info">
+        <h3>CgRb hat</h3>
+        <p>$test</p>
+        <button onclick="buyProduct('CgRb hat')">Buy Now</button>
       </div>
     </div>
   </div>
@@ -269,7 +282,6 @@ footer {
   </p>
 </section>
 
-<!-- CONTACT -->
 <section class="section contact" id="contact">
   <h2>wanna work with us?</h2>
 
@@ -279,13 +291,20 @@ footer {
   <button onclick="sendMessage()">Send</button>
 </section>
 
+<section class="section contact" id="reports">
+  <h2>reports & feedback</h2>
+
+  <input id="reportName" placeholder="Your Name">
+  <textarea id="reportMessage" rows="5" placeholder="Report or Feedback"></textarea>
+  <button onclick="sendReport()">Send</button>
+</section>
+
 <footer>
   © 2026 VEAR. Logos and Designs are Copyrighted.
 </footer>
 
-<!-- SLIDER SCRIPT (FIXED) -->
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
   const slides = document.querySelectorAll(".slide");
   let current = 0;
 
@@ -295,8 +314,65 @@ document.addEventListener("DOMContentLoaded", function () {
     slides[current].classList.add("active");
   }, 4000);
 });
+
+function buyProduct(productName) {
+  alert(productName + " purchase coming soon!");
+}
+
+
+function sendMessage() {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  fetch("https://discord.com/api/webhooks/1470660970916352081/WN_yUomqxxh0-5TU1IB9Z6sD4MkJiMX3OfFZsbDVdQqqKYnJ7ZsT77MJyW20A0dTzkON", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      content: `📩 New VEAR Application
+
+Name: ${name}
+Email: ${email}
+Message: ${message}`
+    })
+  })
+  .then(() => {
+    alert("Application sent successfully!");
+  })
+  .catch(() => {
+    alert("Failed to send application.");
+  });
+}
+
+const REPORT_WEBHOOK = "https://discord.com/api/webhooks/1471222703649329305/rvdznPCkzW3IEym3tlDdF5ewqJg6cc3XqjBii2tUjQWHqhJVeOFl4TW43o3hcNKM6ke3";
+function sendReport() {
+  const name = document.getElementById("reportName").value;
+  const message = document.getElementById("reportMessage").value;
+
+  fetch(REPORT_WEBHOOK, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      content: `⚠️ New Report / Feedback
+
+Name: ${name}
+Message: ${message}`
+    })
+  })
+  .then(() => {
+    alert("Report / Feedback sent!");
+  })
+  .catch(() => {
+    alert("Failed to send report.");
+  });
+}
 </script>
 
 </body>
 </html>
+
 
